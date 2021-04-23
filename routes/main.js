@@ -22,8 +22,12 @@ router.get('/register', (req, res) => {
 
 //login success or fail
 router.get('/loginsuccess', (req, res) => {
-    nav.local = 'loginok'
-    res.render('pages/loginsucess', { nav : nav })
+    if(req.isAuthenticated()){
+        nav.local = 'loginok'
+        res.render('pages/loginsucess', { nav : nav })
+    } else {
+        res.redirect('/')
+    }
 });
 router.get('/loginfail', (req, res) => {
     res.redirect('/');
