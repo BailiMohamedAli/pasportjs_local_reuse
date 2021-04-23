@@ -3,6 +3,8 @@ const app = express();
 const path = require('path');
 const ejs = require('ejs');
 const PORT = 3003;
+//connecting to DB
+require('./config/database');
 //setup view engine, assets dir and bassic json protocol
 app.set('view engine', 'ejs');
 
