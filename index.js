@@ -30,25 +30,12 @@ app.use(session({
         maxAge: 1000 * 60 * 60 * 24 // Equals 1 day (1 day * 24 hr/1 day * 60 min/1 hr * 60 sec/1 min * 1000 ms / 1 sec)
     }
 }));
+//initialize passport JS
+require('./config/passport');
+app.use(passport.initialize());
+app.use(passport.session());
 
-//routing data
-const nav ={
-    local: ''
-}
-
-//routes
-app.get('/', (req, res) => {
-    nav.local = 'home';
-    res.render('pages/home', { nav : nav })
-});
-app.get('/login', (req, res) => {
-    nav.local = 'login';
-    res.render('pages/login', { nav : nav });
-});
-app.get('/register', (req, res) => {
-    nav.local = 'register';
-    res.render('pages/register', { nav : nav })
-});
+app.use(require('./routes/main'));
 app.use('/user', require('./routes/user'));
 
 //listning to server
