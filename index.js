@@ -17,6 +17,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => res.render('pages/home'));
 app.get('/login', (req, res) => res.render('pages/login'));
 app.get('/register', (req, res) => res.render('pages/register'));
+app.use('/user', require('./routes/user'));
 
 //listning to server
 app.listen(PORT, () => console.log(`server runnig on port ${PORT}`));
