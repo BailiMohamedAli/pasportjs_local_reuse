@@ -6,8 +6,19 @@
   >
   <!-- Float links to the right. Hide them on small screens -->
   <div class="w3-right">
-    <a href="/" class="w3-bar-item w3-button">Home</a>
+    <% if (nav.local === 'home') { %>
     <a href="/register" class="w3-bar-item w3-button">Register</a>
     <a href="/login" class="w3-bar-item w3-button">Login</a>
+    <% } %> 
+    <% if (nav.local === 'register') { %>
+    <a href="/" class="w3-bar-item w3-button">Home</a>
+    <a href="/login" class="w3-bar-item w3-button">Login</a>
+    <% } %> 
+    <% if (nav.local === 'login') { %>
+    <a href="/" class="w3-bar-item w3-button">Home</a>
+    <a href="/register" class="w3-bar-item w3-button">Register</a>
+    <% } %>
   </div>
 </div>
+
+<% if (nav.local === 'home') { %> <% } %>
