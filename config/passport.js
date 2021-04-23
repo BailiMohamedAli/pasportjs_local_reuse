@@ -4,12 +4,12 @@ const User = require('./model/User');
 const {validPassword} = require('./lib/passwordUtils');
 
 const customFields = {
-    usernameField: 'email_log',
-    passwordField: 'password_log'
+    usernameField: 'email',
+    passwordField: 'password'
 };
 
 const verifyCallback = async (username, password, done) => {
-    console.log('username: ',username);
+    console.log('username: ',username , 'passwod: ',password);
     try {
         const user = await User.findOne({ email: username });
         console.log('werein the pasport start');

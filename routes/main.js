@@ -5,6 +5,7 @@ const nav ={
     local: ''
 }
 
+
 //routes
 router.get('/', (req, res) => {
     nav.local = 'home';
@@ -19,4 +20,18 @@ router.get('/register', (req, res) => {
     res.render('pages/register', { nav : nav })
 });
 
+//login success or fail
+router.get('/loginsuccess', (req, res) => {
+    nav.local = 'loginok'
+    res.render('pages/loginsucess', { nav : nav })
+});
+router.get('/loginfail', (req, res) => {
+    res.redirect('/');
+});
+
+//logoout session and user routes
+router.get('/logout', (req, res) => {
+    req.logout();
+    res.redirect('/');
+});
 module.exports = router;
