@@ -1,8 +1,10 @@
 const router = require('express').Router();
+const User = require('../config/model/User')
 
 //routing data
 const nav ={
-    local: ''
+    local: '',
+    username: ''
 }
 
 
@@ -21,9 +23,15 @@ router.get('/register', (req, res) => {
 });
 
 //login success or fail
-router.get('/loginsuccess', (req, res) => {
+router.get('/loginsuccess', async (req, res) => {
     if(req.isAuthenticated()){
         nav.local = 'loginok'
+        console.log(req.session.passport.user);
+        const userid = req.session.passport.user;
+        const user = await User.findById(userid);
+        console.log(user);
+        nav.username = user.username;
+        console.log(nav);
         res.render('pages/loginsucess', { nav : nav })
     } else {
         res.redirect('/')
