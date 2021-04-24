@@ -12,8 +12,6 @@ const verifyCallback = async (username, password, done) => {
     console.log('username: ',username , 'passwod: ',password);
     try {
         const user = await User.findOne({ email: username });
-        console.log('werein the pasport start');
-        console.log(user);
         if (!user) return done(null, false);
         if (user) {
             //this is the verification function for the password provided by the user

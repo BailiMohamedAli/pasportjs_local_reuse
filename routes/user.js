@@ -25,7 +25,7 @@ router.post('/register', async (req, res) => {
         if(!addUser) throw new Error ('registration process failed!');
         res.status(200).redirect('/login');
     } catch (err) {
-        log.error(err);
+        log.status(500).error(err);
     }
 });
 
