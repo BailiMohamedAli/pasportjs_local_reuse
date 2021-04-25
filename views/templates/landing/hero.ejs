@@ -10,7 +10,13 @@
         <% if (nav.local === 'loginok') { %>
           <p class="w3-animate-bottom">
             <span class="w3-padding w3-black w3-opacity-min"><b>H</b></span>
-            <span class="w3-hide-small w3-text-dark-grey">llo <%= nav.username %></span>
+            <span class="w3-hide-small w3-text-dark-grey">ello <%= nav.username %></span>
+          </p>
+        <% } %>
+        <% if (nav.local === 'loginfail') { %>
+          <p class="w3-animate-bottom">
+            <span class="w3-padding w3-black w3-opacity-min"><b>F</b></span>
+            <span class="w3-hide-small w3-text-dark-grey">ail to log, unothaurized route</span>
           </p>
         <% } %>
     </h1>

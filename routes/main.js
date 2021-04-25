@@ -29,13 +29,15 @@ router.get('/loginsuccess', async (req, res) => {
         const user = await User.findById(userid);
         nav.username = user.username;
         nav.local = 'loginok'
-        res.render('pages/loginsucess', { nav : nav })
+        console.log(`${user.username} is loged in on protected route`);
+        res.render('pages/loginsucess', { nav : nav });
     } else {
         res.redirect('/')
     }
 });
 router.get('/loginfail', (req, res) => {
-    res.redirect('/');
+    nav.local = 'loginfail'
+    res.render('pages/loginfail', { nav : nav });
 });
 
 //logoout session and user routes

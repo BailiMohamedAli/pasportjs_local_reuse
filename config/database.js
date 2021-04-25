@@ -3,7 +3,7 @@ require('dotenv').config();
 
 async function connect(uriDb) {
     try {
-        await mongoose.connect(uriDb || 'mongodb://localhost/YOUR_DB_NAME', {
+        await mongoose.connect(uriDb, {
 			useNewUrlParser: true,
 			useUnifiedTopology: true,
 			useCreateIndex: true,

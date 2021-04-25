@@ -9,14 +9,12 @@ const customFields = {
 };
 
 const verifyCallback = async (username, password, done) => {
-    console.log('username: ',username , 'passwod: ',password);
     try {
         const user = await User.findOne({ email: username });
         if (!user) return done(null, false);
         if (user) {
             //this is the verification function for the password provided by the user
             const isValid = validPassword(password, user.hash, user.salt);
-            console.log('validation complete: ', isValid);
             //just to separate
             return isValid ? done(null, user) : done(null, false);
         }

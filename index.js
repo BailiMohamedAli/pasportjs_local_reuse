@@ -27,7 +27,7 @@ app.use(session({
     saveUninitialized: true,
     store: sessionStore,
     cookie: {
-        maxAge: 1000 * 60 * 60 * 24 // Equals 1 day (1 day * 24 hr/1 day * 60 min/1 hr * 60 sec/1 min * 1000 ms / 1 sec)
+        maxAge: 1000 * 60 * 60 * 24 // Equals 1 day
     }
 }));
 //initialize passport JS
@@ -39,4 +39,4 @@ app.use(require('./routes/main'));
 app.use('/user', require('./routes/user'));
 
 //listning to server
-app.listen(PORT, () => console.log(`server runnig on port ${PORT}`));
+app.listen(PORT, () => console.log(`server runnig on port ${PORT}:\nhttp://localhost:${PORT}`));
