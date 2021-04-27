@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const User = require('../config/model/User')
+const {isAuth} = require('../routes/middleware/authorization')
 
 //routing data
 const nav ={
@@ -23,17 +23,10 @@ router.get('/register', (req, res) => {
 });
 
 //login success or fail
-router.get('/loginsuccess', async (req, res) => {
-    if(req.isAuthenticated()){
-        const userid = req.session.passport.user;
-        const user = await User.findById(userid);
-        nav.username = user.username;
+router.get('/loginsuccess',isAuth, (req, res) => {
+        nav.username = req.user.username;
         nav.local = 'loginok'
-        console.log(`${user.username} is loged in on protected route`);
         res.render('pages/loginsucess', { nav : nav });
-    } else {
-        res.redirect('/')
-    }
 });
 router.get('/loginfail', (req, res) => {
     nav.local = 'loginfail'

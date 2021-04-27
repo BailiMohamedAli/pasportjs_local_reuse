@@ -19,7 +19,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 //seting up express session with connect-mongodb
 const sessionStore = MongoStore.create({ 
     mongoUrl: process.env.DB_STRING, 
-    collection: 'sessions' 
+    collection: 'sessions',
+    ttl: 24*60*60,
+    autoRemove: 'native'
 });
 app.use(session({
     secret: process.env.SECRET_SESS,
