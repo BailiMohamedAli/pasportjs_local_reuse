@@ -3,6 +3,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const User = require('./model/User');
 const {validPassword} = require('./lib/passwordUtils');
 
+//passport JS local strategy setup
 const customFields = {
     usernameField: 'email',
     passwordField: 'password'
@@ -14,6 +15,7 @@ const verifyCallback = async (username, password, done) => {
         if (!user) return done(null, false);
         if (user) {
             //this is the verification function for the password provided by the user
+            //this function is provided from the passwordUtils;
             const isValid = validPassword(password, user.hash, user.salt);
             //just to separate
             return isValid ? done(null, user) : done(null, false);

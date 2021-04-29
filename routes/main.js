@@ -33,7 +33,7 @@ router.get('/loginfail', (req, res) => {
     res.render('pages/loginfail', { nav : nav });
 });
 
-//logoout session and user routes
+//logoout session
 router.get('/logout', (req, res) => {
     req.logout();
     res.redirect('/');

@@ -3,6 +3,7 @@ const router = require('express').Router();
 const passport = require('passport');
 const {genPassword} = require('../config/lib/passwordUtils');
 
+//login passport local strategy resolution
 router.post('/login', passport.authenticate(
     'local', 
     {failureRedirect: '/loginfail', 
@@ -11,6 +12,7 @@ router.post('/login', passport.authenticate(
 
 //registration 
 router.post('/register', async (req, res) => {
+    //genPassword is part of the passwordUtils functions;
     const salthash = genPassword(req.body.password);
     const salt = salthash.salt;
     const hash = salthash.hash;
@@ -28,7 +30,5 @@ router.post('/register', async (req, res) => {
         log.status(500).error(err);
     }
 });
-
-
 
 module.exports = router;
