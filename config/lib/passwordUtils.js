@@ -1,5 +1,5 @@
 const crypto = require('crypto');
-//I think I'll work on a Bcrypt bassed passUtil system less complicated LOL complicated HHH
+//you can use Bcrypt instead of this function but I like to do it this wait to be motre step by step methodological
 
 // TODO
 function validPassword(password, hash, salt) {
